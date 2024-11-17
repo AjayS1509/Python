@@ -5,3 +5,16 @@
 #  directly followed by a letter.
 #  e.g. correct ("This is very funny and cool.Indeed!") should return
 #  "This is very funny and cool. Indeed!"
+
+import re
+
+def correct(text):
+    # Step 1: Replace two or more spaces with a single space
+    text = re.sub(r'\s{2,}', ' ', text)
+    
+    # Step 2: Insert a space after a period if not already followed by a space
+    text = re.sub(r'\.(\S)', r'. \1', text)
+    
+    return text
+res = correct ("This is very funny and cool.Indeed!")
+print(res)
